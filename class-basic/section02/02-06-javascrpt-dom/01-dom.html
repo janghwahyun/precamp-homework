@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 자바 스크립트로 HTML을 바꾼다 -->
+
+    <title>돔(Document => HTML문서)조작하기</title>
+    <script>
+        function 바꾸는기능(){
+            document.getElementById("여기바꿀래요").innerText = "꺼져"
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="여기바꿀래요">안녕하세요</div>
+    <button onclick="바꾸는기능()">이름을 바꾸자</button>
+</body>
+
+</html>

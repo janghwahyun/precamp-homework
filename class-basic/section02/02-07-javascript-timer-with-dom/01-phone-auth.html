@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>timer with dom</title>
+    <script>
+         function 인증번호요청기능 (){
+            const 랜덤한숫자 = Math.random()
+            // console.log(랜덤한숫자)
+
+            const 여섯자리숫자 = Math.floor(랜덤한숫자  * (10**6))
+            // console.log(여섯자리숫자)
+
+            //맨앞자리 0이나오면 문자열로 바꿔줌 -> 6자리가안되면 앞에를 뭘로채울건데 -> 0으로채워줘
+            const 인증번호 = String(여섯자리숫자).padStart(6, "0") //padEnd사용해보기
+            // console.log(인증번호)
+
+            document.getElementById("인증번호보여주기").innerText = 인증번호
+        }
+            let 시간 = 180
+            function 타이머(){
+        
+                setInterval(function(){
+                
+                const 분 = Math.floor(시간 / 60)
+                // 나머지
+                const 초 = 시간 % 60 
+
+                // console.log("남은시간: " + 분 + ":" + 초)
+
+                시간 = 시간 - 1
+                }, 1000)
+
+                document.getElementById("타이머보여주기").innerText = 분 
+                
+        }
+    </script>
+</head>
+<body>
+    <div id="인증번호보여주기">000000</div>
+    <button onclick="인증번호요청기능(); 타이머()">인증번호 요청하기</button>
+    <div id="타이머보여주기">3:0</div>
+</body>
+</html>

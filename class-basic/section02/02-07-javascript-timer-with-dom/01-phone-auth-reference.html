@@ -1,0 +1,47 @@
+
+<!-- 레퍼런스 -->
+<!-- 주의사항
+1. 막기 (인증요청 한 번 누르면 다시 못누르게 막아야)
+2. 클릭하면 기존꺼를 삭제하고 다시 시작-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>timer with dom</title>
+    <script>
+         function 인증번호요청기능 (){
+            const 랜덤한숫자 = Math.random()
+            // console.log(랜덤한숫자)
+
+            const 여섯자리숫자 = Math.floor(랜덤한숫자  * (10**6))
+            // console.log(여섯자리숫자)
+
+            //맨앞자리 0이나오면 문자열로 바꿔줌 -> 6자리가안되면 앞에를 뭘로채울건데 -> 0으로채워줘
+            const 인증번호 = String(여섯자리숫자).padStart(6, "0") //padEnd사용해보기
+            // console.log(인증번호)
+
+            document.getElementById("인증번호보여주기").innerText = 인증번호
+
+            //1초뒤에 시작하므로 시작점을 3:00로 적어두고 1초뒤에 2분대부터 시작할 수 있게 설정함
+            let 남은시간 = 179 
+            setInterval(function(){
+                const 분 = Math.floor(남은시간 / 60)
+                const 초 = 남은시간 % 60 
+                
+                document.getElementById("타이머보여주기").innerText = `${분}:${초}` 
+
+                남은시간 = 남은시간 - 1
+            }, 1000)
+
+            document.getElementById('버튼').disabled =true
+            // 스타일태그 달기
+            document.getElementById('버튼').style ="color: red"
+            
+        }         
+    </script>
+</head>
+<body>
+    <div id="인증번호보여주기">000000</div>
+    <button id="버튼" onclick="인증번호요청기능()" >인증번호 요청하기</button>
+    <div id="타이머보여주기">3:0</div>
+</body>
+</html>
