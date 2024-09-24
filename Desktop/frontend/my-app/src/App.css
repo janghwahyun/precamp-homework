@@ -192,7 +192,8 @@ img {
     border-radius: 8px;
     opacity: 0px;
     border: none;
-    background-color: blue;
+    background: var(--gray-300, #c7c7c7);
+
     color: #fff;
     cursor: pointer;
 }

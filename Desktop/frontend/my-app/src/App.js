@@ -15,6 +15,8 @@ const App = () => {
     const [titleError, setTitleError] = useState('');
     const [contentError, setContentError] = useState('');
 
+    let [isActive, setIsActive] = useState(false);
+
     // const [isActive, setIsActive] = useState(false);
 
     let onChangeWriter = (event) => {
@@ -23,6 +25,15 @@ const App = () => {
             setAuthorError('필수입력 사항 입니다');
         } else {
             setAuthorError('');
+        }
+
+        if (
+            author !== '' &&
+            password !== '' &&
+            title !== '' &&
+            content !== ''
+        ) {
+            setIsActive(true);
         }
     };
 
@@ -33,6 +44,15 @@ const App = () => {
         } else {
             setPassworError('');
         }
+
+        if (
+            author !== '' &&
+            password !== '' &&
+            title !== '' &&
+            content !== ''
+        ) {
+            setIsActive(true);
+        }
     };
 
     let onChangeTitle = (event) => {
@@ -41,6 +61,15 @@ const App = () => {
             setTitleError('필수입력 사항 입니다');
         } else {
             setTitleError('');
+        }
+
+        if (
+            author !== '' &&
+            password !== '' &&
+            title !== '' &&
+            content !== ''
+        ) {
+            setIsActive(true);
         }
     };
 
@@ -51,9 +80,17 @@ const App = () => {
         } else {
             setContentError('');
         }
+        if (
+            author !== '' &&
+            password !== '' &&
+            title !== '' &&
+            content !== event.target.value
+        ) {
+            setIsActive(true);
+        }
     };
 
-    let onClickSignup = () => {
+    let onClickSignup = (event) => {
         if (
             author !== '' &&
             password !== '' &&
@@ -170,7 +207,16 @@ const App = () => {
             </div>
             <div className="bottom-button-box">
                 <button className="bottom-button-cancle">취소</button>
-                <button className="bottom-button-regi" onClick={onClickSignup}>
+                <button
+                    className="bottom-button-regi"
+                    onClick={onClickSignup}
+                    style={{
+                        backgroundColor:
+                            isActive === true
+                                ? 'blue'
+                                : 'var(--gray-300, #c7c7c7)',
+                    }}
+                >
                     등록하기
                 </button>
             </div>
