@@ -2,6 +2,8 @@ import './App.css';
 import React from 'react';
 import { useState } from 'react';
 
+import add from './assets/add_image.jpg';
+
 const App = () => {
     const [author, setAuthor] = useState('');
     const [password, setPassword] = useState('');
@@ -162,9 +164,9 @@ const App = () => {
 
             <div className="photoBox">
                 <div>사진첨부</div>
-                <img src="./assets/add_image.jpg" alt="add_image"></img>
-                <img src="./assets/add_image.jpg" alt="add_image"></img>
-                <img src="./assets/add_image.jpg" alt="add_image"></img>
+                <img src={add} alt="add_image"></img>
+                <img src={add} alt="add_image"></img>
+                <img src={add} alt="add_image"></img>
             </div>
             <div className="bottom-button-box">
                 <button className="bottom-button-cancle">취소</button>
