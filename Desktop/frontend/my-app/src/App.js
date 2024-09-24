@@ -1,6 +1,69 @@
 import './App.css';
+import React from 'react';
+import { useState } from 'react';
 
 const App = () => {
+    const [author, setAuthor] = useState('');
+    const [password, setPassword] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+
+    const [authorError, setAuthorError] = useState('');
+    const [passwordError, setPassworError] = useState('');
+    const [titleError, setTitleError] = useState('');
+    const [contentError, setContentError] = useState('');
+
+    // const [isActive, setIsActive] = useState(false);
+
+    let onChangeWriter = (event) => {
+        setAuthor(event.target.value);
+        if (event.target.value === '') {
+            setAuthorError('필수입력 사항 입니다');
+        } else {
+            setAuthorError('');
+        }
+    };
+
+    let onChangePassword = (event) => {
+        setPassword(event.target.value);
+        if (event.target.value === '') {
+            setPassworError('필수입력 사항 입니다');
+        } else {
+            setPassworError('');
+        }
+    };
+
+    let onChangeTitle = (event) => {
+        setTitle(event.target.value);
+        if (event.target.value === '') {
+            setTitleError('필수입력 사항 입니다');
+        } else {
+            setTitleError('');
+        }
+    };
+
+    let onChangeContent = (event) => {
+        setContent(event.target.value);
+        if (event.target.value === '') {
+            setContentError('필수입력 사항 입니다');
+        } else {
+            setContentError('');
+        }
+    };
+
+    let onClickSignup = () => {
+        if (
+            author !== '' &&
+            password !== '' &&
+            title !== '' &&
+            content !== ''
+        ) {
+            alert('회원가입을 축하드려요');
+        } else {
+            alert('필수항목을 입력해 주세요');
+        }
+    };
+
     return (
         <div className="layout">
             <div className="regi-box">
@@ -16,29 +79,48 @@ const App = () => {
                         text="text"
                         placeholder="   작성자 명을 입력해 주세요"
                         className="writer-password-input"
+                        onChange={onChangeWriter}
                     ></input>
+
                     <input
-                        text="text"
+                        text="password"
                         placeholder="   비밀번호를 입력해 주세요"
                         className="writer-password-input"
+                        onChange={onChangePassword}
                     ></input>
                 </div>
-
+                <div className="requied-mention">
+                    <div>{authorError}</div>
+                    <div>{passwordError}</div>
+                </div>
+                <hr />
                 <div className="title-box">
                     <div>제목</div>
                     <input
                         type="text"
                         placeholder="   제목을 입력해 주세요"
                         className="title-input"
+                        onChange={onChangeTitle}
                     ></input>
                 </div>
+
+                <div className="requied-mention">
+                    <div>{titleError}</div>
+                </div>
+
+                <hr />
+
                 <div className="content-box">
                     <div>내용</div>
                     <textarea
                         type="text"
                         placeholder="    &#13;&#10;   내용을 입력해 주세요"
                         className="content-textarea"
+                        onChange={onChangeContent}
                     ></textarea>
+                    <div className="requied-mention">
+                        <div>{contentError}</div>
+                    </div>
                 </div>
             </div>
             <div className="address-box">
@@ -86,7 +168,9 @@ const App = () => {
             </div>
             <div className="bottom-button-box">
                 <button className="bottom-button-cancle">취소</button>
-                <button className="bottom-button-regi">등록하기</button>
+                <button className="bottom-button-regi" onClick={onClickSignup}>
+                    등록하기
+                </button>
             </div>
         </div>
     );
